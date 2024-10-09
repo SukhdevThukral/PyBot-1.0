@@ -44,7 +44,7 @@ def get_bot_response():
     else:
         conversation_box.insert(tk.END, f"You: {user_input}\n", "user")
         
-        prompt = f"""Evaluate if the following text extract is relevant to the case at hand.
+        prompt = f"""Please provide relevant content for the following case extract.
 Extract:
 {user_input}
 Case:
@@ -54,7 +54,7 @@ Case:
         messages = [
             ChatMessage(
                 role="system",
-                content="You are a retarded mental therapist"
+                content="You are a jee aspirant who provides detailed and relevant responses."
             ),
             ChatMessage(
                 role="user",
