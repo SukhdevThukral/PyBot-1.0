@@ -2,18 +2,9 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from ai21 import AI21Client
 from ai21.models.chat import ChatMessage, ResponseFormat
-import pyttsx3
 
 # Initialize the AI21 client
 client = AI21Client(api_key="F0vMbwgybEVr0EmoKFXunpNjLHrqMXVT")
-
-# Initialize text-to-speech engine
-engine = pyttsx3.init()
-
-# Function to speak text
-def speak_text(text):
-    engine.say(text)
-    engine.runAndWait()
 
 # Define chatbot roles
 roles = {
@@ -78,7 +69,6 @@ def get_bot_response():
     
     if general_response:
         conversation_box.insert(tk.END, f"Bot: {general_response}\n", "bot")
-        speak_text(general_response)
         conversation_history.append(f"Bot: {general_response}\n")
     else:
         # Prepare the conversation prompt based on the current role
@@ -105,7 +95,6 @@ def get_bot_response():
             assistant_response = response.choices[0].message.content
             conversation_box.insert(tk.END, f"Bot: {assistant_response}\n", "bot")
             conversation_history.append(f"Bot: {assistant_response}\n")
-            speak_text(assistant_response)
         except Exception as e:
             conversation_box.insert(tk.END, "Bot: Sorry, there was an error in processing your request.\n", "bot")
 
